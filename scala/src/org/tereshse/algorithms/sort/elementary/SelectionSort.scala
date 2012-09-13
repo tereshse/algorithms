@@ -26,27 +26,10 @@ class SelectionSort extends Sort{
     if (ar == null) return null
     if (ar.length == 1) return ar
     for (i <- 0 until ar.length-1){
-      swap(ar, i, findMinElementIndex(ar, i))
+                  //find index of minimal element index in range i .. ar.length-1
+      swap(ar, i, (i+1 until ar.length).foldLeft(i)((first, second) => if (ar(first) < ar(second)) first else second))
     }
     return ar
-  }
-
-  /**
-   * Finds index of minimum element starts from the given index in the array
-   * @param ar the array
-   * @param first index to start from
-   * @tparam T
-   * @return index of minimun element in sub array
-   */
-  private def findMinElementIndex[T <% Ordered[T]](ar: Array[T], first:Int): Int = {
-    var min : Int = first;
-
-    for(i <- first until ar.length){
-      if(less(ar(i),ar(min))){
-        min = i
-      }
-    }
-    return min
   }
 
 }
