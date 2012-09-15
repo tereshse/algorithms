@@ -34,6 +34,20 @@ object SortUtils {
       return false
   }
 
+  /**
+   * Return true is first parameter is greater then second
+   * @param first ordered value
+   * @param second ordered value
+   * @tparam T ordered type
+   * @return true is first parameter is greater then second
+   */
+  def greater[T <% Ordered[T]](first: T, second: T): Boolean = {
+    if (first.compareTo(second) > 0)
+      return true
+    else
+      return false
+  }
+
 
   /**
    * Returns true if given array is sorted
@@ -46,8 +60,8 @@ object SortUtils {
     if (ar.length == 0) return true
     if (ar.length == 1) return true
 
-    for (i <- 1 until ar.length){
-      if (!less(ar(i-1),ar(i)))
+    for (i <- 1 until ar.length) {
+      if (greater(ar(i - 1), ar(i)))
         return false
     }
     return true

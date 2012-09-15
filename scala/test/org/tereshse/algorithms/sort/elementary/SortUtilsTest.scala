@@ -3,6 +3,7 @@ package org.tereshse.algorithms.sort.elementary
 import org.scalatest.FunSuite
 import org.tereshse.algorithms.sort.utils.SortUtils.swap
 import org.tereshse.algorithms.sort.utils.SortUtils.less
+import org.tereshse.algorithms.sort.utils.SortUtils.greater
 import org.tereshse.algorithms.sort.utils.SortUtils.isSorted
 
 class SortUtilsTest extends FunSuite {
@@ -66,6 +67,11 @@ class SortUtilsTest extends FunSuite {
     assert(!less(2,2))
   }
 
+  test("greater method test cases, quite obvious") {
+    assert(!greater(1,2))
+    assert(greater(2,1))
+    assert(!greater(2,2))
+  }
   test("isSorted returns true on null array") {
     //given //when //then
      assert(isSorted(null))
@@ -80,6 +86,12 @@ class SortUtilsTest extends FunSuite {
     //given //when //then
     assert(isSorted(Array[Int](0,1,2,3)))
   }
+
+  test("isSorted returns true on 0,1,1,2,3 array") {
+    //given //when //then
+    assert(isSorted(Array[Int](0,1,1,2,3)))
+  }
+
 
   test("isSorted returns false on 0,1,3,2 array") {
     //given //when //then

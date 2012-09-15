@@ -1,32 +1,33 @@
 package org.tereshse.algorithms.sort.elementary
 
 import org.scalatest.FunSuite
-import org.tereshse.algorithms.sort.utils.SortUtils.isSorted
+import org.tereshse.algorithms.sort.utils.SortUtils._
 
-class SelectionSortTest extends FunSuite {
-  var sort: SelectionSort = new SelectionSort()
+
+class InsertionSortTest extends FunSuite {
+  var sort: InsertionSort = new InsertionSort()
+
 
   test("that sort of 2 element Array is ...") {
     //given //when
-    val sortedArray = sort.sort(Array[java.lang.Integer](3,2))
+    val sortedArray = sort.sort(Array[java.lang.Integer](3, 2))
     //then
     assert(sortedArray.length == 2)
-    assert(sortedArray(0) == 2)
-    assert(sortedArray(1) == 3)
     assert(isSorted(sortedArray))
   }
 
   test("that sort of 3 element Array is ...") {
     //given //when
-    val sortedArray = sort.sort(Array(3,2,1))
+    val sortedArray = sort.sort(Array(3, 2, 1))
     //then
     assert(sortedArray.length == 3)
     assert(isSorted(sortedArray))
 
   }
+
   test("that sort of n element Array is ...") {
     //given //when
-    val sortedArray = sort.sort(Array(3,2,5,8,1,4,7,6))
+    val sortedArray = sort.sort(Array(3, 2, 5, 8, 1, 4, 7, 6))
     //then
     assert(sortedArray.length == 8)
     assert(isSorted(sortedArray))

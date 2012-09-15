@@ -22,7 +22,7 @@ class SelectionSort extends Sort{
    * @tparam T
    * @return sorted array
    */
-  def sort[T <% Ordered[T]](ar: Array[T]): Array[T] = {
+  def doSort[T <% Ordered[T]](ar: Array[T]): Array[T] = {
     if (ar == null) return null
     if (ar.length == 1) return ar
     for (i <- 0 until ar.length-1){
