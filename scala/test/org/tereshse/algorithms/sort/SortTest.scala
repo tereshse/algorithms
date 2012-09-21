@@ -1,10 +1,9 @@
-package org.tereshse.algorithms.sort.elementary
+package org.tereshse.algorithms.sort
 
 import org.scalatest.FunSuite
-import org.tereshse.algorithms.sort.Sort
 
-class SortTest  extends FunSuite {
-  val sort: Sort = new Sort(){
+class SortTest extends FunSuite {
+  val sort: Sort = new Sort() {
     def doSort[T <% Ordered[T]](ar: Array[T]): Array[T] = {
       return ar
     }

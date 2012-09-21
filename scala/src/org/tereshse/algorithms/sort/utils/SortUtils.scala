@@ -11,7 +11,7 @@ object SortUtils {
    * @param second index of the second element to swap
    * @tparam T
    */
-  def swap[T <% Ordered[T]](ar: Array[T], first: Int, second: Int) {
+  def swap[T](ar: Array[T], first: Int, second: Int) {
     if (ar == null) return
     if (ar.length == 0) return
     if (ar.length == 1) return
