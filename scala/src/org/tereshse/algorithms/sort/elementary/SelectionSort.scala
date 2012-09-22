@@ -23,8 +23,6 @@ class SelectionSort extends Sort{
    * @return sorted array
    */
   def doSort[T <% Ordered[T]](ar: Array[T]): Array[T] = {
-    if (ar == null) return null
-    if (ar.length == 1) return ar
     for (i <- 0 until ar.length-1){
                   //find index of minimal element index in range i .. ar.length-1
       swap(ar, i, (i+1 until ar.length).foldLeft(i)((first, second) => if (ar(first) < ar(second)) first else second))

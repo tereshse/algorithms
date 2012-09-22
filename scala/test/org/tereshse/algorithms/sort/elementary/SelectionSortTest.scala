@@ -4,7 +4,7 @@ import org.scalatest.FunSuite
 import org.tereshse.algorithms.sort.utils.SortUtils.isSorted
 
 class SelectionSortTest extends FunSuite {
-  var sort: SelectionSort = new SelectionSort()
+  val sort: SelectionSort = new SelectionSort()
 
   test("that sort of 2 element Array is ...") {
     //given //when

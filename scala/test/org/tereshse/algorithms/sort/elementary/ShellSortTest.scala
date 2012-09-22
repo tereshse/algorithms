@@ -2,11 +2,12 @@ package org.tereshse.algorithms.sort.elementary
 
 import org.scalatest.FunSuite
 import org.tereshse.algorithms.sort.utils.SortUtils._
+import java.util
+import org.tereshse.algorithms.sort.utils.RandomUtils
 
 
-class InsertionSortTest extends FunSuite {
-  val sort: InsertionSort = new InsertionSort()
-
+class ShellSortTest extends FunSuite {
+  val sort: ShellSort = new ShellSort()
 
   test("that sort of 2 element Array is ...") {
     //given //when
@@ -40,6 +41,16 @@ class InsertionSortTest extends FunSuite {
     //then
     assert(sortedArray.length == 10)
     assert(isSorted(sortedArray))
-
   }
+
+  test("that sort of n random element Array with dublicates is ...") {
+    //given
+    val unsortedArray = Array.fill(100){RandomUtils.getRandomInt(100)}
+    //when
+    val sortedArray = sort.sort(unsortedArray)
+    //then
+    assert(sortedArray.length == 100)
+    assert(isSorted(sortedArray))
+  }
+
 }

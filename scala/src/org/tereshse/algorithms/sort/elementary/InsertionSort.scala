@@ -21,21 +21,17 @@ class InsertionSort extends Sort {
    * @return sorted array
    */
   def doSort[T <% Ordered[T]](ar: Array[T]): Array[T] = {
-
-    for (i <- 1 until ar.length) {
-      if (less(ar(i), ar(i - 1))) {
-        breakable {
-          for (j <- i until 0 by -1) {
-            if (less(ar(j), ar(j - 1)))
-              swap(ar, j, j - 1)
-            else
-              break
-          }
-        }
-      }
-    }
-
-    return ar
+    doSort(ar,1)
   }
 
+  def doSort[T <% Ordered[T]](ar: Array[T], inc: Int): Array[T] = {
+    for (i <- inc until ar.length) {
+      var j = i
+      while(j>=inc && less(ar(j), ar(j - 1))){
+        swap(ar, j, j - 1)
+        j=j-inc
+      }
+    }
+    ar
+  }
 }
