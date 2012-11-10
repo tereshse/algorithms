@@ -1,5 +1,4 @@
 package dijkstra
-import scala.runtime.ScalaRunTime
 
 object Dijkstra {
 
@@ -27,12 +26,14 @@ object Dijkstra {
 
   class ShortestPath(val graph: Graph, val start: Vertex) {
 
+    // Returns pair ( total weigt of the path, List of the vertices from start to target incl
     def findShortestPathTo(target: Vertex): (Int, List[Vertex]) = {
       if (target == start) (0, start :: Nil)
       else findShortestPathToInternal(target, Set((start, 0)), (0, start :: Nil))
     }
 
     def findShortestPathToInternal(target: Vertex, explored: Set[(Vertex, Int)], path: (Int, List[Vertex])): (Int, List[Vertex]) = {
+      //TODO handle case when there is no path from start to target
       val newExplored = findVerticesAccessedFromExplored(explored).minBy(_._2)
       if (newExplored._1 == target)
         (newExplored._2, path._2 :+ newExplored._1)
