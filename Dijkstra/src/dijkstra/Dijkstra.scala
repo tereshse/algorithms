@@ -32,7 +32,7 @@ object Dijkstra {
       else findShortestPathToInternal(target, Set((start, 0)), (0, start :: Nil))
     }
 
-    def findShortestPathToInternal(target: Vertex, explored: Set[(Vertex, Int)], path: (Int, List[Vertex])): (Int, List[Vertex]) = {
+    private def findShortestPathToInternal(target: Vertex, explored: Set[(Vertex, Int)], path: (Int, List[Vertex])): (Int, List[Vertex]) = {
       //TODO handle case when there is no path from start to target
       val newExplored = findVerticesAccessedFromExplored(explored).minBy(_._2)
       if (newExplored._1 == target)
@@ -41,12 +41,12 @@ object Dijkstra {
         findShortestPathToInternal(target, explored + newExplored, (newExplored._2, path._2 :+ newExplored._1))
     }
 
-    def findVerticesAccessedFromExplored(explored: Set[(Vertex, Int)]): Set[(Vertex, Int)] = {
+    private def findVerticesAccessedFromExplored(explored: Set[(Vertex, Int)]): Set[(Vertex, Int)] = {
       for (
         exp <- explored;
         edge <- graph.edges(exp._1) if explored.exists(p => p._1.equals(edge.from)) && !explored.exists(p => p._1.equals(edge.to))
       ) yield (edge.to, exp._2 + edge.weight)
     }
   }
-  
+
 }
